@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Add a list</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='addList.css') }}">
+    </head>
+    <body>
+        <div class="wrapper">
+            <form action="/addList/{{ userid }}" method="POST" class="form">
+              <div class="pageTitle title">Fill in the details for the list </div>
+              <input type="text" name="name" class="name formEntry" placeholder="List Name" />
+              <textarea name="desc" class="message formEntry" placeholder="Description"></textarea>
+              <button class="submit formEntry">Submit</button>
+            </form>
+          </div>
+    </body>
+</html>

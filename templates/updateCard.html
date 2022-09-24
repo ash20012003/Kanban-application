@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Update Task</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='addList.css') }}">
+    </head>
+    <body>
+        <div class="wrapper">
+            <form action="/update/{{ userid }}/{{ todoCount }}/{{ lindex }}" method="POST" class="form">
+              <div class="pageTitle title">Fill in the UPDATED details for the Task </div>
+              <input type="text" name="name" class="name formEntry" placeholder="Task Name" />
+              <input type="date" name="date" class="name formEntry" placeholder="Date of Completion"/>
+              <textarea name="desc" class="message formEntry" placeholder="Description"></textarea>
+              <button class="submit formEntry">Submit</button>
+            </form>
+          </div>
+    </body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>You are in!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script>
+        $( function() {
+          $( "#sortable" ).sortable({
+            revert: true
+          });
+          $( "#draggable" ).draggable({
+            connectToSortable: "#sortable",
+            helper: "clone",
+            revert: "invalid"
+          });
+          $( "ul, li" ).disableSelection();
+        } );
+        </script> -->
+        <script src="{{ url_for('static', filename='script.js') }}" type="text/javascript"></script>
+</head>
+<body>
+    <ul>
+        <li><p>Welcome {{ username }} !!</p></li>
+        <li style="float:right"><a href="/summary/{{ userid }}" id="button" class="button">Summary</a> </li>
+        <li style="float:right"> <a href="/" id="button" class="button">Sign Out</a></li>
+      </ul>
+
+
+    <div class="main">
+        <div class="modal" id="todo_form">
+            <div class="header">
+              <div class="title">Add Todo</div>
+              <button class="btn close-modal">&times;</button>
+            </div>
+            <div class="body">
+              <input type="text" id="todo_input" />
+              <input type="submit" value="Add Todo" id="todo_submit" />
+            </div>
+          </div>
+    
+      <div class="todo-container" draggable="true">
+        {% if tl | length > 0 %}
+        {% for h in tl %}
+        <div class="status" id="no_status">
+          <h1>{{ h["todoHeader"] }}</h1>
+          <form method="GET" action='/add_List/{{ userid }}/{{ h["todoCount"] }}'>
+          <button id="add_btn" data-target-modal="#todo_form">+ Add Todo</button>
+          </form>
+          <form method="GET" action='/delete/{{ userid }}/{{ h["todoCount"] }}'>
+          <button id="delete-list">DELETE</button>
+          </form>
+          <!-- <ul id="sortable" class="drag-drop"> -->
+          {% if task[h["todoCount"]] | length > 0 %}
+          {% if h["todoCount"] in task %}
+          {% for t in task[h["todoCount"]] %}
+          
+          <div class="todo" draggable="true">
+              {{ t[1] }}
+            <div class="control-list">
+            <form method="GET" action='/delete/{{ userid }}/{{ h["todoCount"] }}/{{ t[0] }}'>
+            <button id="change">
+            <!-- <span class="close">&times;</span> -->
+            DELETE
+            </button>
+            </form>
+            <form method="GET" action='/update/{{ userid }}/{{ h["todoCount"] }}/{{ t[0] }}'>
+                <button id="change">
+                <!-- <span class="close">&times;</span> -->
+                UPDATE
+                </button>
+                </form>
+            <form method="GET" action='/completed/{{ userid }}/{{ h["todoCount"] }}/{{ t[0] }}'>
+              <button id="change">
+                <!-- <span class="close">&times;</span> -->
+                COMPLETED
+                </button>
+            </form>
+          </div>
+          </div>
+          {%  endfor %}
+          {% endif %}
+          {% endif %}
+          <!-- </ul> -->
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+    
+      
+<div class="add-list">
+    <form method="GET" action="/addList/{{ userid }}">
+    <button class = "button-add-list">+</button>
+    </form>
+    <p>Add a list</p>
+</div> 
+</div>
+
+</body>
+</html>

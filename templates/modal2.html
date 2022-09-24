@@ -1,0 +1,26 @@
+{% extends 'login.html' %}
+{% block modal2 %}
+<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+        </div>
+        <div class="modal-body">
+          Wrong credentials. Kindly use the right username/password. Sign up if you had not created and account!! 
+        </div>
+        <div class="modal-footer">
+          <a href="{{url_for('signup')}}" class="btn btn-secondary">Close</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% block script %}
+<script>
+    $(document).ready(function(){
+        console.log("Window is loaded")
+        $("#exampleModal").modal("show")
+    })
+</script>
+{% endblock %}

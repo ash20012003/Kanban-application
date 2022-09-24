@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Summary</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='addList.css') }}">
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="form2">
+                <div class="pageTitle title2">SUMMARY AND STATISTICS</div>
+                <main class="stats">
+                    <article class="outer">
+                        <span class="topic">Total_Tasks</span>
+                        <span class="topic-value">{{ total_task }}</span>
+                    </article>
+                    <article class="outer">
+                        <span class="topic">Completed</span>
+                        <span class="topic-value">{{ completed }}</span>
+                    </article>
+                    <article class="outer">
+                        <span class="topic">Defaulted</span>
+                        <span class="topic-value">{{ default }}</span>
+                    </article>
+                    <article class="outer">
+                        <span class="topic">Pending</span>
+                        <span class="topic-value">{{ pending }}</span>
+                    </article>
+                </main>
+                <img class="plot2" src="{{ url_for('static', filename='plot2.png') }}">
+            </div>
+        </div>
+       
+    </body>
+</html>
