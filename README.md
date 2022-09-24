@@ -7,7 +7,7 @@
 ```
 - Assuming you have forked the repo, else fork it and perform
 ```bash
-    git clone 
+    git clone https://github.com/ash20012003/Kanban-application
 ```
 - go to the directory where you have saved the folders
 - make this directory a python environment
