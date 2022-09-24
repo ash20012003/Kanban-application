@@ -15,6 +15,10 @@
     python3 -m venv .environment_name
     source .environment_name/bin/activate
 ```
+- install requirements
+```bash
+    pip install -r requirements.txt
+```
 - run the command
 ```bash
     python main.py
